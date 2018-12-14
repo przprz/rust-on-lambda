@@ -6,8 +6,6 @@ ZIP = lambda.zip
 JSON_OUTPUT = $(FUNCTION).json
 
 AWS_ROLE_ARN = arn:aws:iam::XXXX:role/lambda_test_full
-AWS_ROLE_ARN = arn:aws:iam::481135864078:role/lambda_test_full
-
 AWS_PROFILE = --profile pawel.przeniczny@airhelp.com
 AWS_REGION = --region eu-west-1
 
