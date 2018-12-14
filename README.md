@@ -42,7 +42,7 @@ aws lambda invoke \
 jq . output.json
 ```
 
-Or use Makefile with helper tasks.
+Or use Makefile FTW!:
 ```sh 
 make deploy test
 ```
