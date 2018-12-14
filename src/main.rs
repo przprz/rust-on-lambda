@@ -6,7 +6,7 @@ extern crate simple_logger;
 use std::error::Error;
 
 use lambda::{Context, error::HandlerError, lambda};
-use log::{error, info};
+use log::{error, debug};
 use serde_derive::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -28,7 +28,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 
 fn howdy(event: GreetingEvent, ctx: Context) -> Result<GreetingResponse, HandlerError> {
-    info!("Received event: {:?}", event);
+    debug!("Received event: {:?}", event);
     if event.name == "" {
         error!("Empty name in request {}", ctx.aws_request_id);
         return Err(ctx.new_error("Empty name"));
