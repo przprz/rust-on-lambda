@@ -9,7 +9,7 @@ use lambda::{Context, error::HandlerError, lambda};
 use log::{error, info};
 use serde_derive::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 struct GreetingEvent {
     greeting: String,
     name: String,
@@ -22,13 +22,13 @@ struct GreetingResponse {
 
 fn main() -> Result<(), Box<dyn Error>> {
     simple_logger::init_with_level(log::Level::Debug).unwrap();
-    lambda!(my_handler);
+    lambda!(howdy);
 
     Ok(())
 }
 
-fn my_handler(event: GreetingEvent, ctx: Context) -> Result<GreetingResponse, HandlerError> {
-    info!("Hello!");
+fn howdy(event: GreetingEvent, ctx: Context) -> Result<GreetingResponse, HandlerError> {
+    info!("Received event: {:?}", event);
     if event.name == "" {
         error!("Empty name in request {}", ctx.aws_request_id);
         return Err(ctx.new_error("Empty name"));
