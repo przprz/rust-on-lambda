@@ -28,7 +28,7 @@ deploy: build zip
 update: build zip
 	aws $(AWS_PROFILE) $(AWS_REGION) lambda update-function-code \
 		--function-name $(FUNCTION) \
-		--zip-file fileb://./$(ZIP) \
+		--zip-file fileb://./$(ZIP)
 
 delete:
 	aws $(AWS_PROFILE) $(AWS_REGION) lambda delete-function \
