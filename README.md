@@ -36,10 +36,16 @@ aws lambda create-function --function-name rustTest \
 ```sh 
 aws lambda invoke \
     --function-name rustTest \
-    --payload '{ "greeting": "howdy! 🤙", "name": "Rust + λ"}'
+    --payload '{ "greeting": "howdy 🤙", "name": "Rust + λ"}'
     output.json
     
 jq . output.json
+```
+Output:
+```json
+{
+  "message": "howdy 🤙, Rust + λ!"
+}
 ```
 
 Or use Makefile FTW!:
